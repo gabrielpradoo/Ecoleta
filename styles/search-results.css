@@ -30,7 +30,7 @@ body::after {
   align-items: center;
 }
 
-#page-search-results header a span{
+#page-search-results header a span {
   background-image: url('../assets/arrow-left.svg');
   width: 20px;
   height: 23px;

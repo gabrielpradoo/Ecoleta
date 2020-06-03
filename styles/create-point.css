@@ -151,7 +151,7 @@ form button:hover{
   color: var(--title-color );
 }
 
-.items-grid li.selected{
+.items-grid li.selected {
   background: #e1faec;
   border: 2px solid #34cb79;
 }

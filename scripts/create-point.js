@@ -79,7 +79,7 @@ function handleSelectedItem(event) {
       return itemIsDifferent
     })
 
-    selectedItems = filteredItems
+    selectedItems = filteredItems;
   } else {
     // if not selected, add on selection
     selectedItems.push(itemId)
