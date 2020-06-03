@@ -22,6 +22,9 @@ function getCities(event) {
   const indexOfSelectedState = event.target.selectedIndex
   stateInput.value = event.target.options[indexOfSelectedState].text
 
+  citySelect.innerHTML = ""
+  citySelect.disabled = true
+
   fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`)
     .then(res => res.json())
     .then(cities => {
@@ -38,3 +41,51 @@ document
   .querySelector("select[name=uf]")
   .addEventListener("change", getCities)
 
+// Items of Collect
+
+// Catch all the li's
+const itemsToCollect = document.querySelectorAll(".items-grid li")
+
+for (const item of itemsToCollect) {
+  item.addEventListener("click", handleSelectedItem)
+}
+
+const collectedItems = document.querySelector("input[name=items]")
+
+let selectedItems = []
+
+function handleSelectedItem(event) {
+  const itemLi = event.target
+  // add or remove a class with javascript
+  itemLi.classList.toggle("selected")
+
+  const itemId = itemLi.dataset.id
+
+
+
+  // check if exists items selected, if yes,
+  // pick them up
+
+  const alreadySelected = selectedItems.findIndex(item => {
+    const itemFound = item == itemId
+    return itemFound
+  })
+
+  // if already selected, uncheck
+  if (alreadySelected >= 0) {
+    // uncheck
+    const filteredItems = selectedItems.filter(item => {
+      const itemIsDifferent = item != itemId
+      return itemIsDifferent
+    })
+
+    selectedItems = filteredItems
+  } else {
+    // if not selected, add on selection
+    selectedItems.push(itemId)
+  }
+  console.log(selectedItems)
+
+  // update the hidden field with the selected data
+  collectedItems.value = selectedItems
+}
