@@ -61,6 +61,8 @@ function handleSelectedItem(event) {
 
   const itemId = itemLi.dataset.id
 
+  //console.log("ITEM ID: ", itemId)
+
 
 
   // check if exists items selected, if yes,
@@ -84,7 +86,7 @@ function handleSelectedItem(event) {
     // if not selected, add on selection
     selectedItems.push(itemId)
   }
-  console.log(selectedItems)
+  //console.log('SELECTED ITEMS: ', selectedItems)
 
   // update the hidden field with the selected data
   collectedItems.value = selectedItems
